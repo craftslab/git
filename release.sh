@@ -7,13 +7,15 @@ git clone https://github.com/git/git/ -b v"$version" --depth=1
 pushd git || exit
 
 # Make path
-mkdir -p release/usr
+mkdir -p release/usr/local
 
 # Build git
-make all PREFIX="$PWD"/release/usr
+make configure
+./configure --prefix="$PWD"/release/usr/local
+make all doc
 
 # Install git
-make install PREFIX="$PWD"/release/usr
+make install install-doc install-html
 
 # Set package
 mkdir -p "$PWD"/release/DEBIAN

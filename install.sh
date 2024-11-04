@@ -1,4 +1,8 @@
 #!/bin/bash
 
 # Install packages
-# TBD
+sudo apt update
+sudo apt install -y \
+  asciidoc \
+  autoconf \
+  gettext

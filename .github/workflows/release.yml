@@ -1,0 +1,41 @@
+---
+name: "release"
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    name: Released on ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
+    steps:
+      - name: '📄 Checkout source'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: '🔤 Set env'
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/*/}
+          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
+          VERSION_NAME=${TAG_NAME#v}
+          echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_ENV
+      - name: '🔧 Install toolchains'
+        shell: bash
+        run: ./install.sh
+      - name: '📦 Release package'
+        shell: bash
+        run: ./release.sh ${{ env.VERSION_NAME }}
+      - name: '🚀 Upload package'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GIT_TOKEN }}
+          file: git/release.deb
+          asset_name: git-${{matrix.os}}-amd64.deb
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Git ${{ env.VERSION_NAME }} released"

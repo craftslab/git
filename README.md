@@ -1,2 +1,26 @@
 # git
-Git Source Code Mirror - This is a publish-only repository but pull requests can be turned into patches to the mailing list via GitGitGadget (https://gitgitgadget.github.io/). Please follow Documentation/SubmittingPatches procedure for any of your improvements.
+
+[![License](https://img.shields.io/github/license/craftslab/git.svg)](https://github.com/craftslab/git/blob/main/LICENSE)
+[![Tag](https://img.shields.io/github/tag/craftslab/git.svg)](https://github.com/craftslab/git/tags)
+
+
+
+## Introduction
+
+*git* is the GitHub actions to build [git](https://github.com/git/git) release on Ubuntu.
+
+
+
+## Dependency
+
+```bash
+TBD
+```
+
+
+
+## Reference
+
+- [creating-debianubuntu-deb-packages](https://www.iodigital.com/en/history/intracto/creating-debianubuntu-deb-packages)
+- [git-patch-path-walk](https://lore.kernel.org/git/4c10f859c8dcc42c4d0470a1f295fba979aca336.1725935335.git.gitgitgadget@gmail.com/T/)
+- [how-to-upload-file-to-github-release-in-a-workflow](https://michael-mckenna.com/how-to-upload-file-to-github-release-in-a-workflow/)

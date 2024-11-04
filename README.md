@@ -7,7 +7,7 @@
 
 ## Introduction
 
-*git* is the GitHub actions to build [git](https://github.com/git/git) release on Ubuntu.
+*git* is the GitHub actions to build [git](https://github.com/git/git) release on ubuntu.
 
 
 
